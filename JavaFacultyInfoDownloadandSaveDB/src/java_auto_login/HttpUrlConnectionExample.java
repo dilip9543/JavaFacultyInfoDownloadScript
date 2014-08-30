@@ -20,6 +20,8 @@ public class HttpUrlConnectionExample {
 		String urlForTimeTable="https://academics.vit.ac.in/student/timetable.asp?sem=WS";
 		String urlFac="https://academics.vit.ac.in/student/fac_profile.asp";
 		String str="A";
+		String username="YOUR_REGISTRATION_NUMBER";
+		String password="YOUR_STUDENT_LOGIN_PASSWORD";
 		DateFormat df = new SimpleDateFormat("E,ddMMMyyyyHH:mm:ss");  
 		df.setTimeZone(TimeZone.getTimeZone("UTC"));  
 		Date date = new Date();
@@ -34,7 +36,7 @@ public class HttpUrlConnectionExample {
 		
 		String page = http.asString(urlForForm);
 		int  captchaStatus=http.getCaptcha(urlCaptcha,"captcha.bmp");
-		String postParams = http.getFormParams(page, "11BCE0498", "9963441872jain");
+		String postParams = http.getFormParams(page,username,password);
 		// 2. Construct above post's content and then send a POST request for
 		// authentication
 		http.sendPost(urlForPostSubmit, postParams);
@@ -55,9 +57,7 @@ public class HttpUrlConnectionExample {
 			
 			
 		}
-		//System.out.println(homepageStatus);
-		//int timetableStatus = http.asFile(urlForTimeTable,"timetable.html");
-		//System.out.println(timetableStatus);
+		
 	}
 	
   
